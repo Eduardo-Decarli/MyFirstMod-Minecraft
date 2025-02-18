@@ -10,19 +10,20 @@ import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.slf4j.Logger;
 
-@Mod(FirstMod.MODID2)
+@Mod(FirstMod.MOD_ID)
 public class FirstMod {
-    public static final String MODID2 = "firstmod";
+    public static final String MOD_ID = "firstmod";
     private static final Logger LOGGER = LogUtils.getLogger();
 
     public FirstMod() {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
         modEventBus.addListener(this::commonSetup);
         MinecraftForge.EVENT_BUS.register(this);
+        ModItems.register(FMLJavaModLoadingContext.get().getModEventBus());
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {
-        LOGGER.info("Configuração comum para o mod '{}'", MODID2);
+        LOGGER.info("Configuração comum para o mod '{}'", MOD_ID);
     }
 
     @SubscribeEvent
